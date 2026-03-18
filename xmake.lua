@@ -1,6 +1,9 @@
 add_requires("cosmocc")
 add_packages("cosmocc")
 set_toolchains("@cosmocc")
+add_rules("plugin.compile_commands.autoupdate",{
+    outputdir = "build",
+})
 
 target("example_hello_x64")
     set_kind("static")
@@ -159,6 +162,8 @@ task("genClangdConfig")
         clangd_content = clangd_content .. '    - "-D_COSMO_SOURCE"\n'
         clangd_content = clangd_content .. '    - "-nostdinc"\n'
         clangd_content = clangd_content .. '    - "-nostdlib"\n'
+        clangd_content = clangd_content .. '  Remove: \n'
+        clangd_content = clangd_content .. '    - "-mcosmo"\n'
         
         -- Write .clangd file
         local clangd_file = path.join(cwd, ".clangd")

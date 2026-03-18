@@ -8,4 +8,5 @@ build/
 
 a.out
 .clangd
-.vscode
+.cache
+.vscode/compile_commands.json
