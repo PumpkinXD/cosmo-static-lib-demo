@@ -157,6 +157,8 @@ task("genClangdConfig")
         clangd_content = clangd_content .. string.format('    - "-I%s"\n', include_path)
         clangd_content = clangd_content .. string.format('    - "-include%s"\n', normalize_inc)
         clangd_content = clangd_content .. '    - "-D_COSMO_SOURCE"\n'
+        clangd_content = clangd_content .. '    - "-nostdinc"\n'
+        clangd_content = clangd_content .. '    - "-nostdlib"\n'
         
         -- Write .clangd file
         local clangd_file = path.join(cwd, ".clangd")
